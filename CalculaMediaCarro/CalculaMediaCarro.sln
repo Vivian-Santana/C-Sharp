@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculaMediaCarro", "CalculaMediaCarro\CalculaMediaCarro.csproj", "{542FA975-2593-4D6D-9765-E22EF01C1969}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercicios-3", "Exercicios-3\Exercicios-3.csproj", "{E9BFBB73-E996-4C7E-9448-27F340744D85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{542FA975-2593-4D6D-9765-E22EF01C1969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{542FA975-2593-4D6D-9765-E22EF01C1969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{542FA975-2593-4D6D-9765-E22EF01C1969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{542FA975-2593-4D6D-9765-E22EF01C1969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9BFBB73-E996-4C7E-9448-27F340744D85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9BFBB73-E996-4C7E-9448-27F340744D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9BFBB73-E996-4C7E-9448-27F340744D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9BFBB73-E996-4C7E-9448-27F340744D85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E7F872A-781D-495E-B4B1-E3C1369A8BA0}
+	EndGlobalSection
+EndGlobal
