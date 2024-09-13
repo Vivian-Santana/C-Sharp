@@ -8,13 +8,20 @@ void ExibirMsgBoasVindas()
     Console.WriteLine(msgBoasVindas + " " + nome + " " + sobrenome);
 }
 
+//método para pular linha estilizado
+void pularLinha(string titulo)
+{
+    int qtdLetras = titulo.Length;
+    string ifen = string.Empty.PadLeft(qtdLetras, '-'); //add os ifens às saídas de exibição dos titulos no console.
+    Console.WriteLine(ifen);
+    Console.WriteLine(titulo);
+    Console.WriteLine(ifen);
+}
+
+pularLinha("1 - Criar uma variável chamada notaMedia e atribua um valor inteiro a ela. " +
+    "Caso seu valor seja maior ou igual a 5, escreva na tela 'Nota suficiente para aprovação'.");
 //chamando a função
 ExibirMsgBoasVindas();
-
-/* 1
- * Criar uma variável chamada notaMedia e atribua um valor inteiro a ela. 
- * Caso seu valor seja maior ou igual a 5, escreva na tela "Nota suficiente para aprovação".
- */
 
 int notaMedia = 8;
 
@@ -27,26 +34,19 @@ else
     Console.WriteLine("Nota insuficiente para aprovação 🥺");
 }
 
-Console.WriteLine("--------------------------------------------------------------------------------------------------");
+pularLinha("2 Criar uma lista de linguagens de programação, com as linguagens C#, Java e JavaScript." +
+    "Exibir o valor C# no console, utilizando a lista criada.");
 
-/* 2
- * Criar uma lista de linguagens de programação, com as linguagens C#, Java e JavaScript.
- * Exibir o valor "C#" no console, utilizando a lista criada.
-*/
 
 List<string> linguagensProgramacao = new List<string> { "C#", "Java", "JS" };
 
 Console.WriteLine(linguagensProgramacao[0]);
 
-Console.WriteLine("\nDicionário de notas:");
+//Console.WriteLine("\nDicionário de notas:");
 
+pularLinha("3 - Escrever uma função que a partir de dois números de ponto flutuante a e b exiba no console, " +
+    "o resultado de suas quatro operações básicas (adição, subtração, divisão e multiplicação) utilizando interpolação de strings.");
 
-Console.WriteLine("--------------------------------------------------------------------------------------------------");
-/* 3
-* Escrever uma função que a partir de dois números de ponto flutuante a e b exiba no console 
- * o resultado de suas quatro operações básicas (adição, subtração, divisão e multiplicação), 
- * utilizando interpolação de strings.
- */
 
 float a = 10;
 float b = 2;
@@ -67,13 +67,11 @@ void operacoesAritmeticas()
 
 operacoesAritmeticas();
 
-Console.WriteLine("--------------------------------------------------------------------------------------------------");
+pularLinha("4 - Criar uma lista de bandas vazia e adicionar suas bandas prediletas em seguida. " +
+    "Utilizar a estrutura 'for' para mostrar todas as suas bandas preferidas, listadas na lista do exercício anterior, no console.");
 
-/* 4
- * Criar uma lista de bandas vazia e adicionar suas bandas prediletas em seguida.
- * Utilizar a estrutura 'for' para mostrar todas as suas bandas preferidas, listadas
- * na lista do exercício anterior, no console.
-*/
+
+
 
 List<string> bandas = new List<string>();
 
@@ -97,7 +95,7 @@ string bandasFavoritas = String.Join(", ", bandas);
 // Imprimir a saída em uma única linha
 Console.WriteLine($"Bandas favoritas: {bandasFavoritas}"); // Skank, Cranberries, U2, Paralamas do Sucesso
 
-Console.WriteLine("--------------------------------------------------------------------------------------------------");
+pularLinha("5 - Criar um dicionário que represente um aluno, com uma lista de notas, e mostre a média de suas notas na tela.");
 // 5
 Console.WriteLine("Criar um programa que calcula a soma de todos os elementos inteiros em uma lista.");
 
@@ -111,9 +109,8 @@ foreach (int numero in numeros)
 
 Console.WriteLine($"A soma dos elementos da lista é: {soma2}");
 
-Console.WriteLine("--------------------------------------------------------------------------------------------------");
+pularLinha("6 - Criar um dicionário que represente um aluno, com uma lista de notas, e mostre a média de suas notas na tela.");
 
-//5 Criar um dicionário que represente um aluno, com uma lista de notas, e mostre a média de suas notas na tela.
 Dictionary<string, List<double>> notasAlunos = new Dictionary<string, List<double>>();
 
 // Adicione notas para alguns alunos
@@ -132,20 +129,35 @@ foreach (var aluno in notasAlunos)
     Console.WriteLine($"Média de {aluno.Key}: {media:F1}");
 }
 
-Console.WriteLine("--------------------------------------------------------------------------------------------------");
-/* 6
+pularLinha("7 - Criar um dicionário que represente um aluno, com uma lista de notas, e mostre a média de suas notas na tela.");
+
+Dictionary<string, List<int>> vendasCarros = new Dictionary<string, List<int>> {
+    { "Bugatti Veyron",new List<int> { 10, 15, 12, 8, 5 } },
+    { "Koenigsegg Agera RS",new List<int> { 2, 3, 5, 6, 7 } },
+    { "Lamborghini Aventador",new List<int> { 20, 18, 22, 24, 16 } },
+    { "Pagani Huayra",new List<int> { 4, 5, 6, 5, 4 } },
+    { "Ferrari LaFerrari",new List<int> { 7, 6, 5, 8, 10 } }
+};
+double mediaVendasBugatti = vendasCarros["Bugatti Veyron"].Average();// Average calcula a média
+Console.WriteLine("Média de vendas do Bugatti Veyron: " + mediaVendasBugatti);
+
+
+
+pularLinha("Exercicio 8");
+
+/* 8
  * Criar um programa que gerencie o estoque de uma loja. Utilize um dicionário para armazenar 
  * produtos e suas quantidades em estoque e mostre, a partir do nome de um produto, sua 
  * quantidade em estoque.
  */
 
 
-/* 7
+/* 9
  * Crie um programa que implemente um quiz simples de perguntas e respostas. Utilize um dicionário 
  * para armazenar as perguntas e as respostas corretas.
  */
 
-/* 8
+/* 10
  * Criar um programa que simule um sistema de login utilizando um dicionário para armazenar nomes 
  * de usuário e senhas.
  */
