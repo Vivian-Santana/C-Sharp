@@ -1,6 +1,5 @@
 ﻿// Screen Sound
 string mensagemDeBoasVindas = "Boas vindas ao Screen Sound";
-//List<string> listaDasBandas = new List<string> { "U2", "Skank", "Cranberries" };
 
 //Dicionário
 Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
@@ -31,7 +30,7 @@ void ExibirOpcoesDoMenu()
     Console.WriteLine("Digite -1 para sair");
 
     Console.Write("\nDigite a sua opção: "); //write equivale ao print do java
-    string opcaoEscolhida = Console.ReadLine()!; //le input | ! impede input de valor null
+    string opcaoEscolhida = Console.ReadLine()!; //ReadLine pega o input | ! impede input de valor null
     int opcaoEscolhidaNumerica = int.Parse(opcaoEscolhida);
 
 
@@ -82,24 +81,23 @@ void MostrarBandasRegistradas()
     Console.Clear();
     ExibirTitulosOpcoes("Exibindo todas as bandas registradas");
 
-
-    /*for (int i = 0; i < listaDasBandas.Count; i++)
-     {
-             Console.WriteLine($"Banda: {listaDasBandas[i]}");
-     }
-    */
-
     // pega o valor em das chaves do dicionário
-    foreach (string banda in bandasRegistradas.Keys)
+    foreach (KeyValuePair<string, List<int>> banda in bandasRegistradas) // substituição (string banda in bandasRegistradas.Keys) | mudança para exibir o nome da banda e as notas associadas
     {
-        Console.WriteLine($"Banda: {banda}");
+        /*
+         * linha 92: verifica se há notas registradas para a banda. Se houver, 
+         * ele converte a lista de notas (banda.Value) em uma string 
+         * com notas separadas por vírgulas.
+         */
+        string notas = banda.Value.Count > 0 ? string.Join(", ", banda.Value): "Nenhuma nota registrada"; // Concatena as notas separadas por vírgulas
+        Console.WriteLine($"Banda: {banda.Key} | Notas: {notas}");
     }
 }
 
 void ExibirTitulosOpcoes(string titulo)
 {
     int qtdLetras = titulo.Length;
-    string ifen = string.Empty.PadLeft(qtdLetras, '-'); //add os ifens a saídas de exibição dos titulos no console.
+    string ifen = string.Empty.PadLeft(qtdLetras, '-'); //add os ifens às saídas de exibição dos titulos no console.
     Console.WriteLine(ifen);
     Console.WriteLine(titulo);
     Console.WriteLine(ifen);
@@ -119,13 +117,14 @@ void avaliarBanda()
     ExibirTitulosOpcoes("Avaliar Banda");
     Console.Write("Digite o nome da banda que deseja avaliar: ");
     string nomeBanda = Console.ReadLine()!;
-    if (bandasRegistradas.ContainsKey(nomeBanda))
+
+    if (bandasRegistradas.ContainsKey(nomeBanda))// verificando se a banda escolhida (se a key existe)
     {
-        Console.Write($"Qual nota voce deseja dar a banda {nomeBanda}?");
-        int nota = int.Parse(Console.ReadLine()!);
+        Console.Write($"Qual nota voce deseja dar a banda {nomeBanda}?"); 
+        int nota = int.Parse(Console.ReadLine()!); //atribuindo a nota (valor) a chave (var nomeBanda)
         bandasRegistradas[nomeBanda].Add(nota);// [] indexa o dicionario usando a chave, acessa os valores das chaves que é uma lista de inteiros | .Add coloca a nota
         Console.WriteLine($"A nota {nota} foi registrada com sucesso! para a banda {nomeBanda}");
-        Thread.Sleep(2000);
+        Thread.Sleep(3000); //espera 0,003seg pra voltar ao menu
         Console.Clear();
         ExibirOpcoesDoMenu();
     }
@@ -139,7 +138,6 @@ void avaliarBanda()
 
     }
 }
-
 
 ExibirOpcoesDoMenu();
 
