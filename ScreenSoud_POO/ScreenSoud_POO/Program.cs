@@ -1,6 +1,4 @@
-﻿// nome, artista, duração, dispnibilidade
-
-//criando musicas
+﻿//instanciando album
 Album albumSkank = new Album();
 albumSkank.Nome = "maquinarama";
 
