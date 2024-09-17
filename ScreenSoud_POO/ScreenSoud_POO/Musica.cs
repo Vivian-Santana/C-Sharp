@@ -2,7 +2,7 @@
 class Musica
 {
     // atributos
-    public string? Titulo { get; set; }
+    public string Titulo { get; set; }
     public string Artista { get; set; }
     public double Duracao { get; set; }
     public bool Disponivel { get; set; }
