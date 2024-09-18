@@ -12,6 +12,6 @@ public class ContaBancaria
     {
         Console.WriteLine("INFORMAÇÕES DA CONTA:");
         Console.WriteLine($"Titular: {this.titular}");
-        Console.WriteLine($"Saldo atual: {this.saldo}");
+        Console.WriteLine($"Saldo atual: {this.saldo:F2}");
     }
 }
