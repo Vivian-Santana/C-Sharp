@@ -4,7 +4,14 @@ public class Banda
     //instancia de album
     private List<Album> albums = new List<Album>();
 
-    public string NomeBanda { get; set; }
+    //construtor
+    public Banda(string nomeBanda)
+    {
+        NomeBanda = nomeBanda;
+    }
+
+
+    public string NomeBanda { get; }
 
     public void AdicionarAbum(Album album)
     {

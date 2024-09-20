@@ -1,7 +1,13 @@
 ﻿public class Album
 {
     private List<Musica> musicas = new List<Musica>(); //campo
-    public string NomeAlbum { get; set; }
+
+    public Album(string nomeAlbum)
+    {
+        NomeAlbum = nomeAlbum;
+    }
+
+    public string NomeAlbum { get; }
 
     public double DuracaoTotal => musicas.Sum(musica => musica.Duracao);// soma a aduração das musicas e retorna na propriedade só de leitura.
     public void addMusica(Musica musica)

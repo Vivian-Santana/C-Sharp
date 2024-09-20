@@ -1,28 +1,31 @@
 ﻿//instanciando uma banda
-Banda Skank = new Banda();
-Skank.NomeBanda = "Skank";
+Banda Skank = new Banda("Skank");
 
 //instanciando album
-Album albumSkank = new Album();
-albumSkank.NomeAlbum = "maquinarama";
+Album albumSkank = new Album("maquinarama");
 
-Musica musica1 = new Musica(Skank);
-musica1.Titulo = "Canção noturna";
+Musica musica1 = new Musica(Skank, "Canção noturna");
 musica1.Duracao = 3.58; //em minutos
+musica1.Disponivel = true;
 
+Musica musica2 = new Musica(Skank, "Três lados")
+{
+    Duracao = 3.53,     //outra forma de incializar propriedades opcionais no obj.
+    Disponivel = true
+};
 
-Musica musica2 = new Musica(Skank);
-musica2.Titulo = "Três lados";
-musica2.Duracao = 3.53;
-
-Musica musica3 = new Musica(Skank);
-musica3.Titulo = "Ali";
+Musica musica3 = new Musica(Skank, "Ali");
 musica3.Duracao = 5.6;
+musica3.Disponivel = false;
 
 //add musicas ao album
 albumSkank.addMusica(musica1);
 albumSkank.addMusica(musica2);
 albumSkank.addMusica(musica3);
+
+musica1.ExibirFichaTecnica();
+musica2.ExibirFichaTecnica();
+musica3.ExibirFichaTecnica();
 
 albumSkank.ExibirMusicasDoAlbum();
 

@@ -1,14 +1,16 @@
 ﻿//atributos (fields) e propriedades (properties)
 public class Musica
 {
-    public Musica(Banda banda)
+    //construtor com 2 parâmetros
+    public Musica(Banda artista, string titulo)
     {
-        Artista = Artista;
+        Artista = artista;
+        Titulo = titulo;
     }
 
     // atributos
-    public string Titulo { get; set; }
-    public string Artista { get; set; }
+    public string Titulo { get; }
+    public Banda Artista { get; } //composição de classes
     public double Duracao { get; set; }
     public bool Disponivel { get; set; }
     public Genero Genero { get; set; } //composição de classes
@@ -35,13 +37,11 @@ public class Musica
      * com coleções de dados, realizar operações em uma sequência de elementos ou lidar com delegados.
      */
 
-    public int MyProperty { get; set; }
-
     //método para exibição das informações de musicas
     public void ExibirFichaTecnica()
     {
         Console.WriteLine($"Titulo:{Titulo}");
-        Console.WriteLine($"Artista:{Artista}");
+        Console.WriteLine($"Artista:{Artista.NomeBanda}");
         Console.WriteLine($"Duração {Duracao}");
         if (Disponivel)
         {
