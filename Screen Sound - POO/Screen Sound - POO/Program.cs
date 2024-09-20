@@ -35,3 +35,24 @@ Console.WriteLine($"A música {musica1.Titulo} é do gênero {musica1.Genero.Gen
 Skank.AdicionarAbum(albumSkank);
 Skank.ExibirDiscografia();
 
+//Podcast
+Console.WriteLine("\n\nPodcast");
+
+Episodio ep1 = new(2, "Técnicas de facilitação", 45);
+ep1.AdicionarConvidados("Bruna");
+ep1.AdicionarConvidados("Erica");
+ep1.AdicionarConvidados("Vivian");
+ep1.AdicionarConvidados("José");
+ep1.AdicionarConvidados("Mariana");
+//Console.WriteLine(ep1.Resumo);
+
+Episodio ep2 = new(1, "Técnicas de aprensizado", 67);
+ep2.AdicionarConvidados("Ana");
+ep2.AdicionarConvidados("Laura");
+ep2.AdicionarConvidados("Fernando");
+ep2.AdicionarConvidados("Samuel");
+
+Podcast podcast = new("Inteligência LTDA", "Rogério Vilela");
+podcast.addEpisodio(ep1);
+podcast.addEpisodio(ep2);
+podcast.exibirDetalhes();

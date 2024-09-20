@@ -8,7 +8,7 @@ public class Musica
         Titulo = titulo;
     }
 
-    // atributos
+    // propriedades
     public string Titulo { get; }
     public Banda Artista { get; } //composição de classes
     public double Duracao { get; set; }

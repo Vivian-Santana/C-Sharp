@@ -10,7 +10,6 @@ public class Banda
         NomeBanda = nomeBanda;
     }
 
-
     public string NomeBanda { get; }
 
     public void AdicionarAbum(Album album)
