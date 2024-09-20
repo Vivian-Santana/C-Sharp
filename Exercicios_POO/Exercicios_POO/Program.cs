@@ -9,9 +9,9 @@
 //instancia do obj ContaBancaria
 ContaBancaria conta = new ContaBancaria();
 conta.titular = "Vivian Santana";
-conta.idConta = 1;
+//conta.IdConta = 1;
 conta.saldo = 20.00;
-conta.senha = "1234";
+conta.Senha = "1234";
 
 /*
 Console.WriteLine("INFORMAÇÕES DA CONTA:");

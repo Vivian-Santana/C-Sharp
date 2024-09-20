@@ -1,11 +1,11 @@
-﻿
+﻿//Reescrever a classe Conta, criada no ultimo desafio, utilizando properties.
 public class ContaBancaria
 {
-    //atributos
+    //atributos e propriedades
        public string titular;
-       public int idConta = 0;
+       public int IdConta { get; set; }
        public double saldo = 0;
-       public string senha;
+       public string Senha { get; set; }
     
 
     public void ExibirInformacoes()

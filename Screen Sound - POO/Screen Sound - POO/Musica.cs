@@ -1,11 +1,17 @@
 ﻿//atributos (fields) e propriedades (properties)
-class Musica
+public class Musica
 {
+    public Musica(Banda banda)
+    {
+        Artista = Artista;
+    }
+
     // atributos
     public string Titulo { get; set; }
     public string Artista { get; set; }
     public double Duracao { get; set; }
     public bool Disponivel { get; set; }
+    public Genero Genero { get; set; } //composição de classes
 
     /* atributos com letra maiúscula são PROPRIEDADES (são escritas em PascalCase), uma forma sucinta de
      * escrever operações de leitura e escrita propriedade é uma abstração que fornece um meio de acessar e modificar
@@ -45,5 +51,11 @@ class Musica
         {
             Console.WriteLine("Adquira o plano Plus.\n");
         }
+    }
+
+    //metodo para reproduzir uma musica
+    public void Reproduzir()
+    {
+        Console.WriteLine($"Tocando a música {Titulo} de {Artista}");
     }
 }
