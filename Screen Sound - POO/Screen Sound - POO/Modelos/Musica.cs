@@ -1,4 +1,5 @@
-﻿//atributos (fields) e propriedades (properties)
+﻿namespace ScreenSound.Modelos;
+//atributos (fields) e propriedades (properties)
 public class Musica
 {
     //construtor com 2 parâmetros

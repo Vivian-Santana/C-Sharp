@@ -1,4 +1,5 @@
-﻿public class Episodio
+﻿namespace ScreenSound.Modelos;
+public class Episodio
 {
     //convidados estão na lista de strings
     List<string> convidados = new();

@@ -1,4 +1,5 @@
-﻿public class Album
+﻿namespace ScreenSound.Modelos;
+public class Album
 {
     private List<Musica> musicas = new List<Musica>(); //campo
 
