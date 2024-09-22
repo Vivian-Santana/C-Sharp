@@ -5,6 +5,7 @@ public class Banda
     private List<Album> albuns = new List<Album>();
     private List<int> notas = new List<int>(); //notas das bandas
 
+    //Propriedade apenas para leitura (não permite modificação direta)
     public List<int> Notas
     {
         get { return notas; }

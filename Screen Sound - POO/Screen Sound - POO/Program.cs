@@ -88,7 +88,7 @@ void RegistrarBanda()
     Banda banda = new Banda(nomeBanda);
     bandasRegistradas.Add(nomeBanda, banda);//colocando o conteudo de de listas no dicionário.
     // listaDasBandas.Add(nomeBanda);
-    Console.WriteLine($"A banda {nomeBanda} com sucesso!"); //intepolação de variável
+    Console.WriteLine($"A banda {nomeBanda} registrada com sucesso!"); //intepolação de variável
     Thread.Sleep(2000);
 
 
@@ -101,7 +101,7 @@ void RegistrarAlbum()
 {
     Console.Clear();
     ExibirTitulosOpcoes("Registro de álbuns");
-    Console.Write("Digite a banda cujo álbum deseja registrar: ");
+    Console.Write("Para qual banda voce deseja registrar um album?  ");
     string nomeBanda = Console.ReadLine()!;
 
     if (bandasRegistradas.ContainsKey(nomeBanda))
@@ -119,7 +119,7 @@ void RegistrarAlbum()
     else
     {
         Console.WriteLine($"\nA banda {nomeBanda} não foi encontrada.");
-        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+        Console.WriteLine("\nDigite uma tecla para voltar ao menu principal");
         Console.ReadKey();
         Console.Clear();
     }
@@ -133,13 +133,25 @@ void MostrarBandasRegistradas()
     Console.Clear();
     ExibirTitulosOpcoes("Exibindo todas as bandas registradas");
 
-    // pega o valor em das chaves do dicionário
-    foreach (string banda in bandasRegistradas.Keys) // ******
+    // pega o valor das chaves do dicionário
+    foreach (var banda in bandasRegistradas)
     {
-        Console.WriteLine($"Banda: {banda}");
+        Banda bandaAtual = banda.Value; //banda.Value acessa o objeto Banda correspondente.
+
+        //Verifica se há notas registradas
+        if (bandaAtual.Notas.Count > 0)
+        {
+            string notasFormatadas = string.Join(", ", bandaAtual.Notas); // variável local notasFormatadas usa o metodo string.Join para unir os valores da lista de notas.
+            Console.WriteLine($"Banda: {bandaAtual.NomeBanda} | Notas:{notasFormatadas}.");
+
+        }
+        else
+        {
+            Console.WriteLine($"Banda: {bandaAtual.NomeBanda} Sem notas registradas");
+        }
     }
 
-    Console.WriteLine("Pressione qualquer tecla para voltar ao menu principal.");
+    Console.WriteLine("\nPressione qualquer tecla para voltar ao menu principal.");
     Console.ReadKey();
     Console.Clear();
     ExibirOpcoesDoMenu();
@@ -199,23 +211,38 @@ void calcularMedia()
      * limpar o terminal
      * perguntar para qual banda quer ver a media
      * verificar se a banda digitada esta presente no dicionario
+     * e se existe notas para a banda,
      * se tiver fazer o calculo da media
      */
     Console.Clear();
     ExibirTitulosOpcoes("Ver média da Banda");
-    Console.WriteLine("Digite a banda que deseja ver a média de notas");
+    Console.Write("Digite a banda que deseja ver a média de notas: ");
     string nomeBanda = Console.ReadLine()!;
 
+    //verifica se a banda tem notas registradas
     if (bandasRegistradas.ContainsKey(nomeBanda))
     {
-        Banda banda = bandasRegistradas[nomeBanda]; // Pega as notas associadas à banda
-        Console.WriteLine($"\nA média da banda {nomeBanda} é {banda.Media}.");// método média na classe banda usa o Average() p calcular media.
+        Banda banda = bandasRegistradas[nomeBanda];
+
+        // Verifica se a banda tem notas registradas
+        if (banda.Notas.Count > 0)
+        {
+            Console.WriteLine($"\nA média da banda {nomeBanda} é {banda.Media:F2}.");// método média na classe banda usa o Average() p calcular media.
+
+        }
+        else
+        {
+            Console.WriteLine($"\nA banda {nomeBanda} ainda não tem nenhuma nota.");
+        }
     }
     else
     {
-        Console.WriteLine($"A banda {nomeBanda} não foi encontrada");
+        Console.WriteLine($"\nA banda {nomeBanda} não foi encontrada.");
     }
 
+    Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+    Console.ReadKey();
+    Console.Clear();
     ExibirOpcoesDoMenu();
 }
 
@@ -229,11 +256,12 @@ void ExibirDetalhes()
     if (bandasRegistradas.ContainsKey(nomeBanda))
     {
         Banda banda = bandasRegistradas[nomeBanda]; //Pega o objeto Banda do dicionário
-        List<int> notasBanda = banda.Notas; // Acessa as notas da banda
+        List<int> notasBanda = banda.Notas; // notasBanda é uma lista de inteiros (List<int>) que está sendo obtida
+                                            // diretamente da instância Banda, utilizando a propriedade Notas.
 
         if (notasBanda.Count > 0)
         {
-            Console.WriteLine($"\nA média da banda {nomeBanda} é {notasBanda.Average():F2}.");
+            Console.WriteLine($"\nA média da banda {nomeBanda} é {banda.Media:F2}.");
         }
         else
         {
