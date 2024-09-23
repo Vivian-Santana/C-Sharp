@@ -1,5 +1,5 @@
 ﻿namespace ScreenSound.Modelos;
-public class Podcast
+internal class Podcast
 {
     //Lista de episódios
     private List<Episodio> episodios = new List<Episodio>();

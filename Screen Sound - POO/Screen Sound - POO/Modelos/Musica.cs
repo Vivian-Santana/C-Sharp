@@ -1,6 +1,6 @@
 ﻿namespace ScreenSound.Modelos;
 //atributos (fields) e propriedades (properties)
-public class Musica
+internal class Musica
 {
     //construtor com 2 parâmetros
     public Musica(Banda artista, string titulo)

@@ -4,14 +4,14 @@
 string mensagemDeBoasVindas = "Boas vindas ao Screen Sound";
 
 Banda LinkinPark = new Banda("Linkin Park");
-LinkinPark.AdicionarNota(10);
-LinkinPark.AdicionarNota(8);
-LinkinPark.AdicionarNota(6);
+LinkinPark.AdicionarNota(new Avaliacao (10));
+LinkinPark.AdicionarNota(new Avaliacao (8));
+LinkinPark.AdicionarNota(new Avaliacao (6));
 
 Banda Beatles = new Banda("The Beatles");
-Beatles.AdicionarNota(10);
-Beatles.AdicionarNota(8);
-Beatles.AdicionarNota(9);
+Beatles.AdicionarNota(new Avaliacao (10));
+Beatles.AdicionarNota(new Avaliacao (8));
+Beatles.AdicionarNota(new Avaliacao (9));
 
 //Dicionário
 Dictionary<string, Banda > bandasRegistradas = new();
@@ -41,6 +41,7 @@ void ExibirOpcoesDoMenu()
     Console.WriteLine("Digite 4 para avaliar uma banda");
     Console.WriteLine("Digite 5 para exibir detalhes de uma banda");
     Console.WriteLine("Digite 6 para exibir a média de notas uma banda"); //não esta mostrando as notas
+    Console.WriteLine("Digite -1 para sair.");
 
     Console.Write("\nDigite a sua opção: "); //write equivale ao print do java
     string opcaoEscolhida = Console.ReadLine()!; //ReadLine pega o input | ! impede input de valor null
@@ -138,12 +139,11 @@ void MostrarBandasRegistradas()
     {
         Banda bandaAtual = banda.Value; //banda.Value acessa o objeto Banda correspondente.
 
-        //Verifica se há notas registradas
+        //Verifica se há notas registradas // ⚠️ corrigir erro pq não está mais mostrando as notas após o encapsulamento em avaliacao!!!!
         if (bandaAtual.Notas.Count > 0)
         {
             string notasFormatadas = string.Join(", ", bandaAtual.Notas); // variável local notasFormatadas usa o metodo string.Join para unir os valores da lista de notas.
             Console.WriteLine($"Banda: {bandaAtual.NomeBanda} | Notas:{notasFormatadas}.");
-
         }
         else
         {
@@ -186,9 +186,9 @@ void avaliarBanda()
     {
         Banda banda = bandasRegistradas[nomeBanda];//pega o obj do tipo Banda (do dicionario)
         Console.Write($"Qual nota voce deseja dar a banda {nomeBanda}? "); 
-        int nota = int.Parse(Console.ReadLine()!); //atribuindo a nota (valor) a chave (var nomeBanda)
+        Avaliacao nota = Avaliacao.Parse(Console.ReadLine()!); //atribuindo a nota (valor) a chave (var nomeBanda)
         banda.AdicionarNota(nota);
-        Console.WriteLine($"A nota {nota} foi registrada com sucesso! para a banda {nomeBanda}");
+        Console.WriteLine($"A nota {nota.Nota} foi registrada com sucesso! para a banda {nomeBanda}");
         Thread.Sleep(3000); //espera 0,003seg pra voltar ao menu
         Console.Clear();
         ExibirOpcoesDoMenu();
@@ -227,7 +227,7 @@ void calcularMedia()
         // Verifica se a banda tem notas registradas
         if (banda.Notas.Count > 0)
         {
-            Console.WriteLine($"\nA média da banda {nomeBanda} é {banda.Media:F2}.");// método média na classe banda usa o Average() p calcular media.
+            Console.WriteLine($"\nA média da banda {nomeBanda} é {banda.Media:F2}.");// método média na classe banda usa o Average() p calcular media.(encapsulada na propriedade media)
 
         }
         else
@@ -256,7 +256,7 @@ void ExibirDetalhes()
     if (bandasRegistradas.ContainsKey(nomeBanda))
     {
         Banda banda = bandasRegistradas[nomeBanda]; //Pega o objeto Banda do dicionário
-        List<int> notasBanda = banda.Notas; // notasBanda é uma lista de inteiros (List<int>) que está sendo obtida
+        List<Avaliacao> notasBanda = banda.Notas; // notasBanda é uma lista de inteiros (List<int>) que está sendo obtida
                                             // diretamente da instância Banda, utilizando a propriedade Notas.
 
         if (notasBanda.Count > 0)

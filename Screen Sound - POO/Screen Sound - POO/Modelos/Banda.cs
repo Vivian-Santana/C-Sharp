@@ -1,12 +1,12 @@
 ﻿namespace ScreenSound.Modelos;
-public class Banda
+internal class Banda
 {
     //instancia de album
     private List<Album> albuns = new List<Album>();
-    private List<int> notas = new List<int>(); //notas das bandas
+    private List<Avaliacao> notas = new List<Avaliacao>(); //notas das bandas mudei de tipo int para Avaliação apos criar a classe
 
     //Propriedade apenas para leitura (não permite modificação direta)
-    public List<int> Notas
+    public List<Avaliacao> Notas
     {
         get { return notas; }
     }
@@ -18,7 +18,14 @@ public class Banda
     }
 
     public string NomeBanda { get; }
-    public double Media => notas.Average();
+    public double Media
+    {
+        get  //tratamento caso as notas forem menores ou = a 0
+        {
+            if (notas.Count <= 0)return 0;
+            else return notas.Average(a => a.Nota); //lambda: para cada avaliação "a" usa a propriedade nota
+        }
+    }
 
     public List<Album> Albuns => albuns;
 
@@ -27,7 +34,7 @@ public class Banda
         albuns.Add(album);
     }
 
-    public void AdicionarNota(int nota)
+    public void AdicionarNota(Avaliacao nota)
     {
         notas.Add(nota);
     }
