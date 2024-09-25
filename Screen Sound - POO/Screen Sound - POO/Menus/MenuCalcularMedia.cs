@@ -4,7 +4,7 @@ namespace Screen_Sound___POO.Menus;
 
 internal class MenuCalcularMedia : Menu  //forma de extender a classe mãe Menu
 {
-    public void Executar(Dictionary<string, Banda> bandasRegistradas)
+    public override void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
         /*
          * calcula e mostra a média das notas de uma banda 
@@ -14,7 +14,7 @@ internal class MenuCalcularMedia : Menu  //forma de extender a classe mãe Menu
          * e se existe notas para a banda,
          * se tiver fazer o calculo da media
          */
-        Console.Clear();
+        base.Executar(bandasRegistradas);  //chama o método executar da classe menu e o Executar sobrescrito acima
         ExibirTitulosOpcoes("Ver média da Banda");
         Console.Write("Digite a banda que deseja ver a média de notas: ");
         string nomeBanda = Console.ReadLine()!;

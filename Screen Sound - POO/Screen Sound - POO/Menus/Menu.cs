@@ -1,4 +1,6 @@
-﻿namespace Screen_Sound___POO.Menus;
+﻿using ScreenSound.Modelos;
+
+namespace Screen_Sound___POO.Menus;
 //classe mãe
 internal class Menu
 {
@@ -6,9 +8,15 @@ internal class Menu
     public void ExibirTitulosOpcoes(string titulo)
     {
         int qtdLetras = titulo.Length;
-        string ifen = string.Empty.PadLeft(qtdLetras, '※'); //add ※ às saídas de exibição dos titulos no console.
-        Console.WriteLine(ifen);
+        string simbolo = string.Empty.PadLeft(qtdLetras, '※'); //add ※ às saídas de exibição dos titulos no console.
+        Console.WriteLine(simbolo);
         Console.WriteLine(titulo);
-        Console.WriteLine(ifen);
+        Console.WriteLine(simbolo);
+    }
+
+    //sobrescrita de método (override e virtual)
+    public virtual void Executar(Dictionary<string, Banda> bandasRegistrdas)
+    {
+        Console.Clear();
     }
 }

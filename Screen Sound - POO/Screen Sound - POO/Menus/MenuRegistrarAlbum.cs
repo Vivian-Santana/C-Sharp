@@ -4,9 +4,9 @@ namespace Screen_Sound___POO.Menus;
 
 internal class MenuRegistrarAlbum : Menu //forma de extender a classe mãe Menu
 {
-    public void Executar(Dictionary<string, Banda> bandasRegistradas)
+    public override void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
-        Console.Clear();
+        base.Executar(bandasRegistradas);  //chama o método executar da classe menu e o Executar sobrescrito acima
         ExibirTitulosOpcoes("Registro de álbuns");
         Console.Write("Para qual banda voce deseja registrar um album?  ");
         string nomeBanda = Console.ReadLine()!;

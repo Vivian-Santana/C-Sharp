@@ -4,9 +4,10 @@ namespace Screen_Sound___POO.Menus
 {
     internal class MenuExibirDetalhes : Menu //forma de extender a classe mãe Menu
     {
-        public void Executar(Dictionary<string, Banda> bandasRegistradas)
+        //sobrescrita de método (override e virtual)
+        public override void Executar(Dictionary<string, Banda> bandasRegistradas)
         {
-            Console.Clear();
+            base.Executar(bandasRegistradas);  //chama o método executar da classe menu e o Executar sobrescrito acima
             ExibirTitulosOpcoes("Exibir detalhes da banda");
             Console.Write("Digite o nome da banda que deseja conhecer melhor: ");
             string nomeBanda = Console.ReadLine()!;
@@ -37,5 +38,7 @@ namespace Screen_Sound___POO.Menus
                 Console.Clear();
             }
         }
+
+        //implementar método para mostrar os albuns da banda e outro para mostrar as notas
     }
 }

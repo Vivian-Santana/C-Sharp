@@ -19,6 +19,16 @@ Dictionary<string, Banda > bandasRegistradas = new();
 bandasRegistradas.Add(LinkinPark.NomeBanda, LinkinPark);
 bandasRegistradas.Add(Beatles.NomeBanda, Beatles);
 
+Dictionary<int, Menu> opcoes = new();
+opcoes.Add(1, new MenuRegistrarBanda());
+opcoes.Add(2, new MenuRegistrarAlbum());
+opcoes.Add(3, new MenuMostrarBandasRegistradas());
+opcoes.Add(4, new MenuAvaliarBanda());
+opcoes.Add(5, new MenuExibirDetalhes());
+opcoes.Add(6, new MenuCalcularMedia());
+opcoes.Add(-1, new MenuSair());
+
+
 void ExibirLogo()
 {
     Console.WriteLine(@"
@@ -46,47 +56,18 @@ void ExibirOpcoesDoMenu()
 
     Console.Write("\nDigite a sua opção: "); //write equivale ao print do java
     string opcaoEscolhida = Console.ReadLine()!; //ReadLine pega o input | ! impede input de valor null
-    int opcaoEscolhidaNumerica = int.Parse(opcaoEscolhida);
+    int opcaoNumericaEscolhida = int.Parse(opcaoEscolhida);
 
-
-    switch (opcaoEscolhidaNumerica)
+    if (opcoes.ContainsKey(opcaoNumericaEscolhida))
     {
-        case 1:
-            MenuRegistrarBanda menu_1 = new(); //instancia a classe
-            menu_1.Executar(bandasRegistradas); //chama o metodo de execução com o dic de Banda como parâmetro
-            ExibirOpcoesDoMenu(); //chama as opções do menu para serem mostradas
-            break;
-        case 2:
-            MenuRegistrarAlbum menu_2 = new();
-            menu_2.Executar(bandasRegistradas);
-            ExibirOpcoesDoMenu();
-            break;
-        case 3:
-            MenuMostrarBandasRegistradas menu_3 = new();
-            menu_3.Executar(bandasRegistradas);
-            ExibirOpcoesDoMenu();
-            break;
-        case 4:
-            MenuAvaliarBanda menu_4 = new ();
-            menu_4.Executar(bandasRegistradas);
-            ExibirOpcoesDoMenu();
-            break;
-        case 5:
-            MenuExibirDetalhes menu_5 = new ();
-            menu_5.Executar(bandasRegistradas);
-            ExibirOpcoesDoMenu();
-            break;
-        case 6:
-            MenuCalcularMedia menu_6 = new();
-            menu_6.Executar(bandasRegistradas);
-            ExibirOpcoesDoMenu();
-            break;
-        case -1:
-            Console.WriteLine("Tchau tchau :)");
-            break;
-        default:
-            Console.WriteLine("Opção inválida");
-            break;
+        //pega o obj opcoes no dicionario e atribui a variável menu do tipo Menu
+        Menu ExibirMenu = opcoes[opcaoNumericaEscolhida];
+        ExibirMenu.Executar(bandasRegistradas);
+        if(opcaoNumericaEscolhida > 0) ExibirOpcoesDoMenu();
+    }
+    else
+    {
+        Console.WriteLine("Opção inválida");
     }
 
 }

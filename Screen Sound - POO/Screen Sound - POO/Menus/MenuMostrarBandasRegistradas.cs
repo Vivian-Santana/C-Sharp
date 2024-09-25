@@ -5,9 +5,9 @@ namespace Screen_Sound___POO.Menus;
 
 internal class MenuMostrarBandasRegistradas : Menu //forma de extender a classe mãe Menu
 {
-    public void Executar(Dictionary<string, Banda> bandasRegistradas)
+    public override void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
-        Console.Clear();
+        base.Executar(bandasRegistradas);  //chama o método executar da classe menu e o Executar sobrescrito acima
         ExibirTitulosOpcoes("Exibindo todas as bandas registradas");
 
         // pega o valor das chaves do dicionário

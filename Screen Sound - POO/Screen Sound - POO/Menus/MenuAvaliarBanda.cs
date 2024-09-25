@@ -2,9 +2,9 @@
 
 namespace Screen_Sound___POO.Menus;
 
-internal class MenuAvaliarBanda : Menu
+internal class MenuAvaliarBanda : Menu //forma de extender a classe mãe Menu
 {
-    public void Executar(Dictionary<string, Banda> bandasRegistradas)
+    public override void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
         /*
          * escolher qual banda avaliar
@@ -12,7 +12,7 @@ internal class MenuAvaliarBanda : Menu
          * uma nota se a banda não existir volta ao menu
          */
 
-        Console.Clear();
+        base.Executar(bandasRegistradas);  //chama o método executar da classe menu e o Executar sobrescrito a cima
 
         ExibirTitulosOpcoes("Avaliar Banda");
         Console.Write("Digite o nome da banda que deseja avaliar: ");
