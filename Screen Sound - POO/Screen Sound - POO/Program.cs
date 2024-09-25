@@ -1,4 +1,5 @@
-﻿using ScreenSound.Modelos;
+﻿using Screen_Sound___POO.Menus;
+using ScreenSound.Modelos;
 
 // Screen Sound
 string mensagemDeBoasVindas = "Boas vindas ao Screen Sound";
@@ -51,22 +52,34 @@ void ExibirOpcoesDoMenu()
     switch (opcaoEscolhidaNumerica)
     {
         case 1:
-            RegistrarBanda();
+            MenuRegistrarBanda menu_1 = new(); //instancia a classe
+            menu_1.Executar(bandasRegistradas); //chama o metodo de execução com o dic de Banda como parâmetro
+            ExibirOpcoesDoMenu(); //chama as opções do menu para serem mostradas
             break;
         case 2:
-            RegistrarAlbum();
+            MenuRegistrarAlbum menu_2 = new();
+            menu_2.Executar(bandasRegistradas);
+            ExibirOpcoesDoMenu();
             break;
         case 3:
-            MostrarBandasRegistradas();
+            MenuMostrarBandasRegistradas menu_3 = new();
+            menu_3.Executar(bandasRegistradas);
+            ExibirOpcoesDoMenu();
             break;
         case 4:
-            avaliarBanda();
+            MenuAvaliarBanda menu_4 = new ();
+            menu_4.Executar(bandasRegistradas);
+            ExibirOpcoesDoMenu();
             break;
         case 5:
-            ExibirDetalhes();
+            MenuExibirDetalhes menu_5 = new ();
+            menu_5.Executar(bandasRegistradas);
+            ExibirOpcoesDoMenu();
             break;
         case 6:
-            calcularMedia();
+            MenuCalcularMedia menu_6 = new();
+            menu_6.Executar(bandasRegistradas);
+            ExibirOpcoesDoMenu();
             break;
         case -1:
             Console.WriteLine("Tchau tchau :)");
@@ -78,218 +91,8 @@ void ExibirOpcoesDoMenu()
 
 }
 
-void RegistrarBanda()
-{
-    Console.Clear();
-
-    ExibirTitulosOpcoes("Registro de bandas");
-
-    Console.WriteLine("Digite o nome da banda que deseja registrar: ");
-    string nomeBanda = Console.ReadLine()!;
-    Banda banda = new Banda(nomeBanda);
-    bandasRegistradas.Add(nomeBanda, banda);//colocando o conteudo de de listas no dicionário.
-    // listaDasBandas.Add(nomeBanda);
-    Console.WriteLine($"A banda {nomeBanda} registrada com sucesso!"); //intepolação de variável
-    Thread.Sleep(2000);
-
-
-    Console.Clear();
-    //volta a exibir o menu
-    ExibirOpcoesDoMenu();
-}
-
-void RegistrarAlbum()
-{
-    Console.Clear();
-    ExibirTitulosOpcoes("Registro de álbuns");
-    Console.Write("Para qual banda voce deseja registrar um album?  ");
-    string nomeBanda = Console.ReadLine()!;
-
-    if (bandasRegistradas.ContainsKey(nomeBanda))
-    {
-        Console.Write("Agora digite o título do álbum: ");
-        string tituloAlbum = Console.ReadLine()!;
-        Banda banda = bandasRegistradas[nomeBanda];
-        banda.AdicionarAbum(new Album(tituloAlbum));//criar um album pegando o nome da var tituloAlbum
-       
-
-        Console.WriteLine($"O álbum {tituloAlbum} de {nomeBanda} foi registrado com sucesso!");
-        Thread.Sleep(4000);
-        Console.Clear();
-    }
-    else
-    {
-        Console.WriteLine($"\nA banda {nomeBanda} não foi encontrada.");
-        Console.WriteLine("\nDigite uma tecla para voltar ao menu principal");
-        Console.ReadKey();
-        Console.Clear();
-    }
-
-
-    ExibirOpcoesDoMenu();
-}
-
-void MostrarBandasRegistradas()
-{
-    Console.Clear();
-    ExibirTitulosOpcoes("Exibindo todas as bandas registradas");
-
-    // pega o valor das chaves do dicionário
-    foreach (var banda in bandasRegistradas)
-    {
-        Banda bandaAtual = banda.Value; //banda.Value acessa o objeto Banda correspondente.
-
-        //Verifica se há notas registradas // ⚠️ corrigir erro pq não está mais mostrando as notas após o encapsulamento em avaliacao!!!!
-        if (bandaAtual.Notas.Count > 0)
-        {
-            string notasFormatadas = string.Join(", ", bandaAtual.Notas); // variável local notasFormatadas usa o metodo string.Join para unir os valores da lista de notas.
-            Console.WriteLine($"Banda: {bandaAtual.NomeBanda} | Notas:{notasFormatadas}.");
-        }
-        else
-        {
-            Console.WriteLine($"Banda: {bandaAtual.NomeBanda} Sem notas registradas");
-        }
-    }
-
-    Console.WriteLine("\nPressione qualquer tecla para voltar ao menu principal.");
-    Console.ReadKey();
-    Console.Clear();
-    ExibirOpcoesDoMenu();
-}
-
-
-void ExibirTitulosOpcoes(string titulo)
-{
-    int qtdLetras = titulo.Length;
-    string ifen = string.Empty.PadLeft(qtdLetras, '-'); //add os ifens às saídas de exibição dos titulos no console.
-    Console.WriteLine(ifen);
-    Console.WriteLine(titulo);
-    Console.WriteLine(ifen);
-}
-
-
-void avaliarBanda()
-{
-    /*
-     * escolher qual banda avaliar
-     * se a banda existir no dicionário atribuir 
-     * uma nota se a banda não existir volta ao menu
-     */
-
-    Console.Clear();
-
-    ExibirTitulosOpcoes("Avaliar Banda");
-    Console.Write("Digite o nome da banda que deseja avaliar: ");
-    string nomeBanda = Console.ReadLine()!;
-
-    if (bandasRegistradas.ContainsKey(nomeBanda))// verificando se a banda escolhida (se a key existe)
-    {
-        Banda banda = bandasRegistradas[nomeBanda];//pega o obj do tipo Banda (do dicionario)
-        Console.Write($"Qual nota voce deseja dar a banda {nomeBanda}? "); 
-        Avaliacao nota = Avaliacao.Parse(Console.ReadLine()!); //atribuindo a nota (valor) a chave (var nomeBanda)
-        banda.AdicionarNota(nota);
-        Console.WriteLine($"A nota {nota.Nota} foi registrada com sucesso! para a banda {nomeBanda}");
-        Thread.Sleep(3000); //espera 0,003seg pra voltar ao menu
-        Console.Clear();
-        ExibirOpcoesDoMenu();
-    }
-    else
-    {
-        Console.WriteLine($"\nA banda {nomeBanda} não foi encontrada.");
-        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
-        Console.ReadKey();
-        Console.Clear();
-        ExibirOpcoesDoMenu();
-
-    }
-}
-
-void calcularMedia()
-{
-    /*
-     * calcula e mostra a média das notas de uma banda 
-     * limpar o terminal
-     * perguntar para qual banda quer ver a media
-     * verificar se a banda digitada esta presente no dicionario
-     * e se existe notas para a banda,
-     * se tiver fazer o calculo da media
-     */
-    Console.Clear();
-    ExibirTitulosOpcoes("Ver média da Banda");
-    Console.Write("Digite a banda que deseja ver a média de notas: ");
-    string nomeBanda = Console.ReadLine()!;
-
-    //verifica se a banda tem notas registradas
-    if (bandasRegistradas.ContainsKey(nomeBanda))
-    {
-        Banda banda = bandasRegistradas[nomeBanda];
-
-        // Verifica se a banda tem notas registradas
-        if (banda.Notas.Count > 0)
-        {
-            Console.WriteLine($"\nA média da banda {nomeBanda} é {banda.Media:F2}.");// método média na classe banda usa o Average() p calcular media.(encapsulada na propriedade media)
-
-        }
-        else
-        {
-            Console.WriteLine($"\nA banda {nomeBanda} ainda não tem nenhuma nota.");
-        }
-    }
-    else
-    {
-        Console.WriteLine($"\nA banda {nomeBanda} não foi encontrada.");
-    }
-
-    Console.WriteLine("Digite uma tecla para voltar ao menu principal");
-    Console.ReadKey();
-    Console.Clear();
-    ExibirOpcoesDoMenu();
-}
-
-
-void ExibirDetalhes()
-{
-    Console.Clear();
-    ExibirTitulosOpcoes("Exibir detalhes da banda");
-    Console.Write("Digite o nome da banda que deseja conhecer melhor: ");
-    string nomeBanda = Console.ReadLine()!;
-    if (bandasRegistradas.ContainsKey(nomeBanda))
-    {
-        Banda banda = bandasRegistradas[nomeBanda]; //Pega o objeto Banda do dicionário
-        List<Avaliacao> notasBanda = banda.Notas; // notasBanda é uma lista de inteiros (List<int>) que está sendo obtida
-                                            // diretamente da instância Banda, utilizando a propriedade Notas.
-
-        if (notasBanda.Count > 0)
-        {
-            Console.WriteLine($"\nA média da banda {nomeBanda} é {banda.Media:F2}.");
-        }
-        else
-        {
-            Console.WriteLine($"\nA banda {nomeBanda} ainda não possui notas.");
-        }
-
-        Console.WriteLine("Digite uma tecla para votar ao menu principal");
-        Console.ReadKey();
-        Console.Clear();
-        ExibirOpcoesDoMenu();
-
-    }
-    else
-    {
-        Console.WriteLine($"\nA banda {nomeBanda} não foi encontrada!");
-        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
-        Console.ReadKey();
-        Console.Clear();
-        ExibirOpcoesDoMenu();
-    }
-}
-
 ExibirOpcoesDoMenu();
 
-Console.WriteLine("Pressione qualquer tecla para voltar ao menu principal.");
-Console.ReadKey();
-Console.Clear();
-ExibirOpcoesDoMenu();
 
 /*
 //Trabalhando com as outras classes
