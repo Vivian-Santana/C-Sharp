@@ -6,7 +6,7 @@ internal class MenuRegistrarAlbum : Menu //forma de extender a classe mãe Menu
 {
     public override void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
-        base.Executar(bandasRegistradas);  //chama o método executar da classe menu e o Executar sobrescrito acima
+        base.Executar(bandasRegistradas);  //sobrescreve o método executar da classe mãe menu (override)
         ExibirTitulosOpcoes("Registro de álbuns");
         Console.Write("Para qual banda voce deseja registrar um album?  ");
         string nomeBanda = Console.ReadLine()!;
@@ -16,7 +16,7 @@ internal class MenuRegistrarAlbum : Menu //forma de extender a classe mãe Menu
             Console.Write("Agora digite o título do álbum: ");
             string tituloAlbum = Console.ReadLine()!;
             Banda banda = bandasRegistradas[nomeBanda];
-            banda.AdicionarAbum(new Album(tituloAlbum));//criar um album pegando o nome da var tituloAlbum
+            banda.AdicionarAlbum(new Album(tituloAlbum));//criar um album pegando o nome da var tituloAlbum
 
 
             Console.WriteLine($"O álbum {tituloAlbum} de {nomeBanda} foi registrado com sucesso!");

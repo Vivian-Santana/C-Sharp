@@ -7,7 +7,7 @@ internal class MenuMostrarBandasRegistradas : Menu //forma de extender a classe 
 {
     public override void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
-        base.Executar(bandasRegistradas);  //chama o método executar da classe menu e o Executar sobrescrito acima
+        base.Executar(bandasRegistradas); //sobrescreve o método executar da classe mãe menu (override) mantendo tbm o comportamento original
         ExibirTitulosOpcoes("Exibindo todas as bandas registradas");
 
         // pega o valor das chaves do dicionário
@@ -18,7 +18,7 @@ internal class MenuMostrarBandasRegistradas : Menu //forma de extender a classe 
             //Verifica se há notas registradas // ⚠️ corrigir erro pq não está mais mostrando as notas após o encapsulamento em avaliacao!!!!
             if (bandaAtual.Notas.Count > 0)
             {
-                string notasFormatadas = string.Join(", ", bandaAtual.Notas); // variável local notasFormatadas usa o metodo string.Join para unir os valores da lista de notas.
+                string notasFormatadas = string.Join(", ", bandaAtual.Notas.Select(n => n.Nota.ToString())); // variável local notasFormatadas usa o metodo string.Join para unir os valores da lista de notas.
                 Console.WriteLine($"Banda: {bandaAtual.NomeBanda} | Notas:{notasFormatadas}.");
             }
             else

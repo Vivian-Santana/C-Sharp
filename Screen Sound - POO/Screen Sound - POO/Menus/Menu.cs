@@ -14,8 +14,8 @@ internal class Menu
         Console.WriteLine(simbolo);
     }
 
-    //sobrescrita de método (override e virtual)
-    public virtual void Executar(Dictionary<string, Banda> bandasRegistrdas)
+    //método que é sobrescrito (override e virtual)
+    public virtual void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
         Console.Clear();
     }

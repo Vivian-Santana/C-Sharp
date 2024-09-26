@@ -7,7 +7,7 @@ internal class MenuRegistrarBanda : Menu //forma de extender a classe mãe Menu
 {
     public override void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
-        base.Executar(bandasRegistradas);  //chama o método executar da classe menu e o Executar sobrescrito acima
+        base.Executar(bandasRegistradas);
 
         ExibirTitulosOpcoes("Registro de bandas");
 

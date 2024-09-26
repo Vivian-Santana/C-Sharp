@@ -2,17 +2,41 @@
 using ScreenSound.Modelos;
 
 // Screen Sound
-string mensagemDeBoasVindas = "Boas vindas ao Screen Sound";
+string mensagemDeBoasVindas = "Boas vindas ao Screen Sound!";
 
-Banda LinkinPark = new Banda("Linkin Park");
+//linkin park setando e add notas
+Banda LinkinPark = new Banda("linkin park");
 LinkinPark.AdicionarNota(new Avaliacao (10));
 LinkinPark.AdicionarNota(new Avaliacao (8));
 LinkinPark.AdicionarNota(new Avaliacao (6));
 
-Banda Beatles = new Banda("The Beatles");
+//beatles
+Banda Beatles = new Banda("the beatles");
 Beatles.AdicionarNota(new Avaliacao (10));
 Beatles.AdicionarNota(new Avaliacao (8));
 Beatles.AdicionarNota(new Avaliacao (9));
+
+Album yellowSubmarine = new Album("yellow submarine");
+
+Beatles.AdicionarAlbum(yellowSubmarine);
+
+yellowSubmarine.AdicionarNota(new Avaliacao(8));
+yellowSubmarine.AdicionarNota(new Avaliacao(9));
+yellowSubmarine.AdicionarNota(new Avaliacao(10));
+
+//setando album
+Album meteora = new Album("meteora");
+
+//relacionando o álbum à banda
+LinkinPark.AdicionarAlbum(meteora);
+
+meteora.AdicionarNota(new Avaliacao(10));
+meteora.AdicionarNota(new Avaliacao(5));
+meteora.AdicionarNota(new Avaliacao(8));
+
+
+
+
 
 //Dicionário
 Dictionary<string, Banda > bandasRegistradas = new();
@@ -26,6 +50,7 @@ opcoes.Add(3, new MenuMostrarBandasRegistradas());
 opcoes.Add(4, new MenuAvaliarBanda());
 opcoes.Add(5, new MenuExibirDetalhes());
 opcoes.Add(6, new MenuCalcularMedia());
+opcoes.Add(7, new MenuAvaliarAlbum());
 opcoes.Add(-1, new MenuSair());
 
 
@@ -52,6 +77,7 @@ void ExibirOpcoesDoMenu()
     Console.WriteLine("Digite 4 para avaliar uma banda");
     Console.WriteLine("Digite 5 para exibir detalhes de uma banda");
     Console.WriteLine("Digite 6 para exibir a média de notas uma banda"); //não esta mostrando as notas
+    Console.WriteLine("Digite 7 para avaliar um album");
     Console.WriteLine("Digite -1 para sair.");
 
     Console.Write("\nDigite a sua opção: "); //write equivale ao print do java

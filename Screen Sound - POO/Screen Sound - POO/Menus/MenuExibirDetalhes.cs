@@ -7,7 +7,7 @@ namespace Screen_Sound___POO.Menus
         //sobrescrita de método (override e virtual)
         public override void Executar(Dictionary<string, Banda> bandasRegistradas)
         {
-            base.Executar(bandasRegistradas);  //chama o método executar da classe menu e o Executar sobrescrito acima
+            base.Executar(bandasRegistradas);  //sobrescreve o método executar da classe mãe menu (override)
             ExibirTitulosOpcoes("Exibir detalhes da banda");
             Console.Write("Digite o nome da banda que deseja conhecer melhor: ");
             string nomeBanda = Console.ReadLine()!;
@@ -25,8 +25,14 @@ namespace Screen_Sound___POO.Menus
                 {
                     Console.WriteLine($"\nA banda {nomeBanda} ainda não possui notas.");
                 }
+                //mostra detalhes do album
+                Console.WriteLine("\nDiscografia");
+                foreach (Album album in banda.Albuns)
+                {
+                    Console.WriteLine($"{album.NomeAlbum} | média do album: {album.Media:F2}\n");
+                }
 
-                Console.WriteLine("Digite uma tecla para votar ao menu principal");
+                Console.WriteLine("Digite uma tecla para voltar ao menu principal");
                 Console.ReadKey();
                 Console.Clear();
             }

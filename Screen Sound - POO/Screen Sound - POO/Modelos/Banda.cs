@@ -1,5 +1,7 @@
-﻿namespace ScreenSound.Modelos;
-internal class Banda
+﻿using Screen_Sound___POO.Modelos;
+
+namespace ScreenSound.Modelos;
+internal class Banda : IAvaliavel //Banda implementa a interface IAvaliavel
 {
     //instancia de album
     private List<Album> albuns = new List<Album>();
@@ -17,7 +19,9 @@ internal class Banda
         NomeBanda = nomeBanda;
     }
 
-    public string NomeBanda { get; }
+    public string NomeBanda { get; } //propriedade
+
+    //metodo da interface
     public double Media
     {
         get  //tratamento caso as notas forem menores ou = a 0
@@ -29,11 +33,12 @@ internal class Banda
 
     public List<Album> Albuns => albuns;
 
-    public void AdicionarAbum(Album album)
+    public void AdicionarAlbum(Album album)
     {
         albuns.Add(album);
     }
 
+    //metodo da interface
     public void AdicionarNota(Avaliacao nota)
     {
         notas.Add(nota);
@@ -41,7 +46,7 @@ internal class Banda
 
     public void ExibirDiscografia()
     {
-        Console.Write($"Discografia da banda {NomeBanda}: ");
+        Console.Write($"Discografia da banda {NomeBanda}:");
         foreach (Album album in albuns)
         {
             Console.WriteLine($"Album {album.NomeAlbum} ({album.DuracaoTotal:F2})\n");

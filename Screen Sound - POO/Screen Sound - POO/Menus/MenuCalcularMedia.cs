@@ -6,15 +6,7 @@ internal class MenuCalcularMedia : Menu  //forma de extender a classe mãe Menu
 {
     public override void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
-        /*
-         * calcula e mostra a média das notas de uma banda 
-         * limpar o terminal
-         * perguntar para qual banda quer ver a media
-         * verificar se a banda digitada esta presente no dicionario
-         * e se existe notas para a banda,
-         * se tiver fazer o calculo da media
-         */
-        base.Executar(bandasRegistradas);  //chama o método executar da classe menu e o Executar sobrescrito acima
+        base.Executar(bandasRegistradas);  //sobrescreve o método executar da classe mãe menu (override)
         ExibirTitulosOpcoes("Ver média da Banda");
         Console.Write("Digite a banda que deseja ver a média de notas: ");
         string nomeBanda = Console.ReadLine()!;
