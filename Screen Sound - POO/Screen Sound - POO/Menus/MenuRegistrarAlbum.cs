@@ -8,7 +8,7 @@ internal class MenuRegistrarAlbum : Menu //forma de extender a classe mãe Menu
     {
         base.Executar(bandasRegistradas);  //sobrescreve o método executar da classe mãe menu (override)
         ExibirTitulosOpcoes("Registro de álbuns");
-        Console.Write("Para qual banda voce deseja registrar um album?  ");
+        Console.Write("Para qual banda voce deseja registrar um album? ");
         string nomeBanda = Console.ReadLine()!;
 
         if (bandasRegistradas.ContainsKey(nomeBanda))
@@ -19,7 +19,7 @@ internal class MenuRegistrarAlbum : Menu //forma de extender a classe mãe Menu
             banda.AdicionarAlbum(new Album(tituloAlbum));//criar um album pegando o nome da var tituloAlbum
 
 
-            Console.WriteLine($"O álbum {tituloAlbum} de {nomeBanda} foi registrado com sucesso!");
+            Console.WriteLine($"O álbum {tituloAlbum} da banda {nomeBanda} foi registrado com sucesso!");
             Thread.Sleep(4000);
             Console.Clear();
         }

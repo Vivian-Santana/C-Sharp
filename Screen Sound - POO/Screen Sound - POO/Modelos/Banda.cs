@@ -31,7 +31,10 @@ internal class Banda : IAvaliavel //Banda implementa a interface IAvaliavel
         }
     }
 
-    public List<Album> Albuns => albuns;
+    //lista de albuns
+    //public List<Album> Albuns => albuns;
+    public IEnumerable<Album> Albuns => albuns; // a mudança de List para a interface de C# IEnumerable evitando que List possa chamar
+                                                // outros métodos como clear() que limpa tds os elementos de uma lista.
 
     public void AdicionarAlbum(Album album)
     {

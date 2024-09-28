@@ -15,7 +15,7 @@ internal class MenuMostrarBandasRegistradas : Menu //forma de extender a classe 
         {
             Banda bandaAtual = banda.Value; //banda.Value acessa o objeto Banda correspondente.
 
-            //Verifica se há notas registradas // ⚠️ corrigir erro pq não está mais mostrando as notas após o encapsulamento em avaliacao!!!!
+            //Verifica se há notas registradas
             if (bandaAtual.Notas.Count > 0)
             {
                 string notasFormatadas = string.Join(", ", bandaAtual.Notas.Select(n => n.Nota.ToString())); // variável local notasFormatadas usa o metodo string.Join para unir os valores da lista de notas.

@@ -1,4 +1,4 @@
-﻿//com convenção toda interface em C# tem I maiúsculo no no incio do nome
+﻿//por convenção toda interface em C# tem I maiúsculo no incio do nome
 using ScreenSound.Modelos;
 
 namespace Screen_Sound___POO.Modelos;

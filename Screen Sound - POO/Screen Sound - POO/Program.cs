@@ -24,6 +24,9 @@ yellowSubmarine.AdicionarNota(new Avaliacao(8));
 yellowSubmarine.AdicionarNota(new Avaliacao(9));
 yellowSubmarine.AdicionarNota(new Avaliacao(10));
 
+//Beatles.Albuns.Clear(); com a mudança de List para a interface de C# IEnumerable
+                           //a lista de albuns não corre o risco de ser apagada.
+
 //setando album
 Album meteora = new Album("meteora");
 
@@ -34,10 +37,6 @@ meteora.AdicionarNota(new Avaliacao(10));
 meteora.AdicionarNota(new Avaliacao(5));
 meteora.AdicionarNota(new Avaliacao(8));
 
-
-
-
-
 //Dicionário
 Dictionary<string, Banda > bandasRegistradas = new();
 bandasRegistradas.Add(LinkinPark.NomeBanda, LinkinPark);
@@ -46,13 +45,13 @@ bandasRegistradas.Add(Beatles.NomeBanda, Beatles);
 Dictionary<int, Menu> opcoes = new();
 opcoes.Add(1, new MenuRegistrarBanda());
 opcoes.Add(2, new MenuRegistrarAlbum());
-opcoes.Add(3, new MenuMostrarBandasRegistradas());
-opcoes.Add(4, new MenuAvaliarBanda());
-opcoes.Add(5, new MenuExibirDetalhes());
-opcoes.Add(6, new MenuCalcularMedia());
-opcoes.Add(7, new MenuAvaliarAlbum());
+opcoes.Add(3, new MenuAvaliarBanda());
+opcoes.Add(4, new MenuAvaliarAlbum());
+// implementar registrar e avaliar uma música.
+opcoes.Add(5, new MenuMostrarBandasRegistradas());
+opcoes.Add(6, new MenuExibirDetalhes());
+opcoes.Add(7, new MenuCalcularMedia());
 opcoes.Add(-1, new MenuSair());
-
 
 void ExibirLogo()
 {
@@ -73,11 +72,12 @@ void ExibirOpcoesDoMenu()
     ExibirLogo();
     Console.WriteLine("\nDigite 1 para registrar uma banda");//writeLine equivale ao println do java
     Console.WriteLine("Digite 2 para registrar um album");
-    Console.WriteLine("Digite 3 para mostrar todas as bandas");
-    Console.WriteLine("Digite 4 para avaliar uma banda");
-    Console.WriteLine("Digite 5 para exibir detalhes de uma banda");
-    Console.WriteLine("Digite 6 para exibir a média de notas uma banda"); //não esta mostrando as notas
-    Console.WriteLine("Digite 7 para avaliar um album");
+    Console.WriteLine("Digite 3 para avaliar uma banda");
+    Console.WriteLine("Digite 4 para avaliar um album");
+    // implementar registrar e avaliar uma música.
+    Console.WriteLine("Digite 5 para mostrar todas as bandas");
+    Console.WriteLine("Digite 6 para exibir detalhes de uma banda");
+    Console.WriteLine("Digite 7 para exibir a média de notas uma banda");
     Console.WriteLine("Digite -1 para sair.");
 
     Console.Write("\nDigite a sua opção: "); //write equivale ao print do java
